@@ -11,8 +11,10 @@ import {Operator} from "./Model/Operator.model";
 export class AppComponent {
   operators:Operator[];
   @ViewChild('phonenumber') phonenumber:ElementRef;
-  result:{operator:string ,price:number};
+  result:number;
+  bestoperator:string="";
   noresult:string;
+  erreurmessage:string=undefined;
 //injection d'un objet
   constructor(private logicalservice:LogicalService){
     this.operators = this.logicalservice.getOperators();
@@ -20,16 +22,31 @@ export class AppComponent {
 
   printNumber(){
     let n=this.phonenumber.nativeElement.value + "";
-    if(this.logicalservice.findMinPriceByPrefix(this.logicalservice.getPrefix(n, this.operators), this.operators).operator!="") {
-      this.result = this.logicalservice.findMinPriceByPrefix(this.logicalservice.getPrefix(n, this.operators), this.operators);
-      this.noresult=undefined;
+
+    if (n.length<11){
+      this.erreurmessage="Please enter a number composed by 11 digits";
+      this.result=undefined;
+      this.bestoperator ="";
     }
 
-
     else {
-      this.result=undefined;
-      this.noresult = "Invalid  or inexistant prefix in the database";
+
+      this.erreurmessage=undefined;
+      if (this.logicalservice.findBestPrice(this.logicalservice.getPrefix(n, this.operators), this.operators) != undefined) {
+        this.result = this.logicalservice.findBestPrice(this.logicalservice.getPrefix(n, this.operators), this.operators);
+        this.bestoperator = this.logicalservice.getOperatorByPrice(this.logicalservice.getPrefix(n, this.operators), this.operators, this.result)
+      }
+
+
+      else {
+        this.result = undefined;
+        this.noresult = "Invalid  or inexistant prefix in the database";
+      }
+
     }
 
   }
+
+
+
 }

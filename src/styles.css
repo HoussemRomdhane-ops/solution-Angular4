@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+#nav{
+  text-align:center;
+  padding:0px;
+  margin-top:0px;
+  margin-bottom:0px;
+  margin-left:auto;
+  margin-right:auto;
+  width:50%;
+
+}
+
+#nav span{
+  padding:0;
+  margin:0;
+  font-weight:bold;
+  font-size:20px;
+}
+
+#nav img{
+  padding:0;
+}
+
+
+#form{
+  margin-left:auto;
+  margin-right:auto;
+  padding:0;
+  width:50%;
+  position:relative;
+  margin-top:20px;
+}
+
+input[type="submit"]{
+  margin-top:10px;
+}
+
+#erreurmesage{
+  color:red;
+  border : 1px solid red;
+  text-align:center;
+  padding:10px;
+}
+
+
+#result{
+
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:30px;
+  width:50%;
+  text-align:center;
+
+}
+
+
+#result span {
+  display: block;
+  text-align:center;
+  font-weight:bold;
+  font-seize:19px;
+
+}
+
+#result > span >span{
+  color:aqua;
+  display: inline;
+}

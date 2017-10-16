@@ -1,13 +1,17 @@
 
-<h1>Welcome to app!</h1>
-<div class="form-group">
+<div id="nav">
+  <img src="../assets/images/logo.jpg" />
+  <span>Houssem Romdhane Solution</span>
+</div>
+<div class="form-group" id="form">
+  <h4 *ngIf="erreurmessage" id="erreurmesage">{{erreurmessage}}</h4>
   <form>
-      <label for="xx">number</label>
-      <input type="number" class="form-control" id="xx" #phonenumber>
+      <label for="xx">Please enter the phone number:</label>
+      <input type="number" class="form-control" id="xx" #phonenumber />
       <input type="submit" class="btn btn-info" value="submit" (click)="printNumber()"/>
   </form>
     <div id="result">
-      <span *ngIf="result"> The best operator is <span>{{result.operator}}</span> with the price <span>{{result.price}}</span></span>
+      <span *ngIf="result"> The best operator is <span>{{bestoperator}}</span> with the price <span>{{result}}</span></span>
       <span *ngIf="noresult" style="color: red">{{noresult}}</span>
     </div>
 </div>

@@ -6,42 +6,6 @@ export class LogicalService {
 
   operators:Operator[]=[];
 
-  findMinPriceByPrefix(prefix:number,operators:Operator[]){
-
-      let minprice:number= undefined;
-      let bestoperator:string="";
-
-
-    for (let i=0;i<operators.length;i++)
-      {
-
-        for(let j=0;j<operators[i].prefixes.length;j++)
-        {
-          if(operators[i].prefixes[j].prefix_number == prefix ){
-
-            if(minprice==undefined){
-              minprice=operators[i].prefixes[j].price;
-              bestoperator=operators[i].name;
-
-
-            }
-            else if( operators[i].prefixes[j].price<minprice) {
-
-              minprice = operators[i].prefixes[j].price;
-              bestoperator=operators[i].name;
-
-            }
-            break;
-          }
-
-        }
-
-
-      }
-
-      return { operator:bestoperator,price:minprice };
-
-  }
 
 
 
@@ -62,9 +26,67 @@ export class LogicalService {
    }
 
 
-   increment(number:number){
-     return ++number;
-   }
+  findBestPrice(prefix:number,operators:Operator[]){
+
+    let minprice:number= undefined;
+    minprice = undefined;
+
+    for (let i=0;i<operators.length;i++)
+    {
+
+      for(let j=0;j<operators[i].prefixes.length;j++)
+      {
+        if(operators[i].prefixes[j].prefix_number == prefix ){
+
+          if(minprice==undefined){
+            minprice=operators[i].prefixes[j].price;
+
+
+          }
+          else if( operators[i].prefixes[j].price<minprice) {
+
+            minprice = operators[i].prefixes[j].price;
+
+          }
+          break;
+        }
+
+      }
+
+
+    }
+
+    return minprice ;
+
+  }
+
+
+  getOperatorByPrice(prefix:number,operators:Operator[],price:number) {
+
+    for (let i = 0; i < operators.length; i++) {
+
+      for (let j = 0; j < operators[i].prefixes.length; j++) {
+
+        if(operators[i].prefixes[j].prefix_number == prefix && operators[i].prefixes[j].price == price  ){
+
+
+            return operators[i].name;
+        }
+
+
+      }
+
+
+    }
+
+    return "no operator founded";
+
+  }
+
+
+
+
+
 
 
 
