@@ -23,7 +23,7 @@ export class AppComponent {
   printNumber(){
     let n=this.phonenumber.nativeElement.value + "";
 
-    if (n.length<11){
+    if (n.length!=11){
       this.erreurmessage="Please enter a number composed by 11 digits";
       this.result=undefined;
       this.bestoperator ="";
