@@ -1,0 +1,14 @@
+
+<h1>Welcome to app!</h1>
+<div class="form-group">
+  <form>
+      <label for="xx">number</label>
+      <input type="number" class="form-control" id="xx" #phonenumber>
+      <input type="submit" class="btn btn-info" value="submit" (click)="printNumber()"/>
+  </form>
+    <div id="result">
+      <span *ngIf="result"> The best operator is <span>{{result.operator}}</span> with the price <span>{{result.price}}</span></span>
+      <span *ngIf="noresult" style="color: red">{{noresult}}</span>
+    </div>
+</div>
+
